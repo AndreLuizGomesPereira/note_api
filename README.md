@@ -5,6 +5,7 @@
 
 # Instalação do Nodemon.
 - **npm i nodemon --save**
+- Execução do projeto **nodemon start** no terminal
 
 **Pasta ROUTES foi inserida dentro da pasta criada por nome APP**
 
@@ -18,3 +19,7 @@
 - pasta app/models
 - Criação dos arquivos note.js e user.js
 - Criando schema dos arquivos note e user e exportado para models usando Mongoose (roteiro para necessidade).
+
+# Utilizamores JWT (Json Web Token - padrão de autenticação)
+ **Dividido em três partes: Header , Payload (possui informações como id  ou email do usuario.) e Signature (é a concatenação das hashes geradas pelo Header e Payload usando base64UrlEncode).**
+- **npm i bcrypt --save** //Biblioteca para trabalhar com password dos usuarios.
