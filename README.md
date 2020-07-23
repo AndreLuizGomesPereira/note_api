@@ -1,5 +1,4 @@
 # API Express-generator.
-
 - **npm i express-generator**
 - **express --view=no-view** (nome_app)
 
@@ -7,7 +6,7 @@
 - **npm i nodemon --save**
 - Execução do projeto **nodemon start** no terminal
 
-**Pasta ROUTES foi inserida dentro da pasta criada por nome APP**
+# **Pasta ROUTES foi inserida dentro da pasta criada por nome APP**
 
 # Instalação do MonGoose. (Utilização com o MongoDB)
 - **npm i mongoose --save**
@@ -21,7 +20,7 @@
 - Criando schema dos arquivos note e user e exportado para models usando Mongoose (roteiro para necessidade).
 
 # Utilizaremos JWT (Json Web Token - padrão de autenticação)
- **Dividido em três partes: Header , Payload (possui informações como id  ou email do usuario.) e Signature (é a concatenação das hashes geradas pelo Header e Payload usando base64UrlEncode).**
+**Dividido em três partes: Header , Payload (possui informações como id ou email do usuario.) e Signature (é a concatenação das hashes geradas pelo Header e Payload usando base64UrlEncode).**
 - **npm i bcrypt --save** //Biblioteca para trabalhar com password dos usuarios.
 - Criado model com a biblioteca.
 - Importar o model para a rota users.
@@ -53,3 +52,7 @@
 
 # Iremos criar o recurso para deletar uma nota especifica.
 - Adicionar uma nova rota DELETE para remoção da nota.
+
+# Iremos criar recurso para buscar as notas criadas.
+- Adicionar uma nova rota GET, porem vamos iniciar nossa nova rota acima dos "ids" para evitarmos problemas na URL.
+- Foi necessário criar um schema index no model notes para filtrar melhor a nossa pesquisa.

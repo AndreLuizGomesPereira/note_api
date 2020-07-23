@@ -14,7 +14,21 @@ router.post('/', withAuth, async (req, res) => {
     } catch (error) {
         res.status(500).json({ error: 'Não foi possível criar uma nota.' });
     }
-})
+});
+
+// Buscar notas por pesquisa.
+router.get('/search', withAuth, async (req, res) => {
+    const { query } = req.query;
+    try {
+        let notes = await Note
+            .find({ author: req.user._id })
+            .find({ $text: { $search: query } });
+        res.json(notes);
+    } catch (error) {
+        res.json({ error: error }).status(500);
+    }
+});
+
 
 // Listar todas as notas criadas pelo usuário
 router.get('/', withAuth, async (req, res) => {
@@ -24,7 +38,8 @@ router.get('/', withAuth, async (req, res) => {
     } catch (error) {
         res.status(500).json({ error: error })
     }
-})
+});
+
 
 // Listar uma nota por ID com usuário logado
 router.get('/:id', withAuth, async (req, res) => {
