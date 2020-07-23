@@ -61,6 +61,25 @@ router.put('/:id', withAuth, async (req, res) => {
         res.status(500).json({ error: 'Problemas para atualizar a nota.' });
 
     }
+});
+
+//Remoção da nota.
+router.delete('/:id', withAuth, async (req, res) => {
+    const { id } = req.params;
+
+    try {
+        let note = await Note.findById(id);
+        if (isOwner(req.user, note)) {
+            await note.delete();
+            res.json({ messsage: 'Nota removida com sucesso!' }).status(204);
+        } else {
+            res.status(403).json({ error: 'Usuário não tem permissão para remover a nota.' });
+
+        }
+    } catch (error) {
+        res.status(500).json({ error: 'Problemas para deletar a nota.' });
+
+    }
 })
 
 

@@ -50,3 +50,6 @@
 
 # Iremos Atualizar uma nota.
 - Adicionar uma nova rota PUT para editar uma nota.
+
+# Iremos criar o recurso para deletar uma nota especifica.
+- Adicionar uma nova rota DELETE para remoção da nota.
