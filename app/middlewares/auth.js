@@ -7,7 +7,7 @@ const WithAuth = (req, res, next) => {
     if (!token)
         res.status(401).json({ error: 'Não autorizada pelo token.' });
     else {
-        jwt.verify(token, secret, (err, decode) => {
+        jwt.verify(token, secret, (err, decoded) => {
             if (err)
                 res.status(401).json({ error: 'Token inválido.' });
             else {

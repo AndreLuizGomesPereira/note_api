@@ -36,3 +36,8 @@
 # Iremos verificar o usuário da requisição.
 - Iniciaremos criando uma pasta **middlewares** dentro do nosso app.
 - Em seguida criar um arquivo auth.js.
+
+# Iremos criar a rotas das Notas do projeto.
+- Criar arquivo em rotas, notes.js.
+- Importar o WithAuth(middleware) para a rota nova.
+- No arquivo app.js deve importar a nova rota da criação das notas.
