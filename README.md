@@ -47,3 +47,6 @@
 
 # Iremos visualizar todas as notas.
 - Adicionar uma nova rota GET para listar as notas.
+
+# Iremos Atualizar uma nota.
+- Adicionar uma nova rota PUT para editar uma nota.

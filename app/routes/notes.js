@@ -42,6 +42,27 @@ router.get('/:id', withAuth, async (req, res) => {
     }
 })
 
+//Editar uma nota.
+router.put('/:id', withAuth, async (req, res) => {
+    const { title, body } = req.body;
+    const { id } = req.params;
+
+    try {
+        let note = await Note.findById(id);
+        if (isOwner(req.user, note)) {
+            let note = await Note.findByIdAndUpdate(id,
+                { $set: { title: title, body: body } },
+                { upsert: true, 'new': true })
+            res.json(note);
+        } else {
+            res.status(403).json({ error: 'Usuário não tem permissão para editar.' });
+        }
+    } catch (error) {
+        res.status(500).json({ error: 'Problemas para atualizar a nota.' });
+
+    }
+})
+
 
 
 const isOwner = (user, note) => {
