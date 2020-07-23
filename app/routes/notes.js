@@ -3,6 +3,7 @@ var router = express.Router();
 const Note = require('../models/note');
 const withAuth = require('../middlewares/auth');
 
+// Criar uma nova nota.
 router.post('/', withAuth, async (req, res) => {
     const { title, body } = req.body;
 
@@ -15,6 +16,17 @@ router.post('/', withAuth, async (req, res) => {
     }
 })
 
+// Listar todas as notas criadas pelo usuário
+router.get('/', withAuth, async (req, res) => {
+    try {
+        let notes = await Note.find({ author: req.user._id });
+        res.json(notes);
+    } catch (error) {
+        res.status(500).json({ error: error })
+    }
+})
+
+// Listar uma nota por ID com usuário logado
 router.get('/:id', withAuth, async (req, res) => {
     try {
         const { id } = req.params;
@@ -29,6 +41,8 @@ router.get('/:id', withAuth, async (req, res) => {
 
     }
 })
+
+
 
 const isOwner = (user, note) => {
     if (JSON.stringify(user._id) == JSON.stringify(note.author._id))
