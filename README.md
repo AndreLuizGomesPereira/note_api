@@ -32,3 +32,7 @@
 - **npm i jsonwebtoken --save**
 - Importar para a nossa rota users.
 - **npm i dotenv --save** //Biblioteca para guardar nossas variáveis de ambiente.
+
+# Iremos verificar o usuário da requisição.
+- Iniciaremos criando uma pasta **middlewares** dentro do nosso app.
+- Em seguida criar um arquivo auth.js.
