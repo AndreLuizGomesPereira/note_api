@@ -1,0 +1,65 @@
+Projeto completo no Github: https://github.com/escola-de-javascript/JavascriptNotesApi​​
+
+
+1 - Instale o express-generator rodando:
+
+npm i express-generator
+
+2 - Gere o projeto:
+
+express --view=no-view javascript_note_api
+
+3 - Instale as bibliotecas:
+
+npm install
+
+4 - Em Routes index atualize o render para:
+
+res.send('hello world')
+
+5 - Suba o projeto:
+
+npm start
+
+4 - Crie uma pasta chamada app:
+
+mkdir app
+
+6 - Mova as views para APP:
+
+mv views app
+
+7 - Mova as rotas para o APP rodando:
+
+mv routes app
+
+8 - No arquivo app.js:
+
+a - Retire as seguintes linhas:
+
+var cookieParser = require('cookie-parser');
+
+
+app.use(cookieParser());
+
+
+var indexRouter = require('./app/routes/index');
+
+
+app.use('/', indexRouter);
+
+b - Atualize:
+
+var usersRouter = require('./routes/users');
+
+para:
+
+var usersRouter = require('./app/routes/users');
+
+9 - Remova o arquivo app/routes/index.js
+
+10 - Para testar, suba o servidor com o comando a baixo e visite http://localhost:3000
+
+npm start
+
+11 - Acesse localhost:3000/users​

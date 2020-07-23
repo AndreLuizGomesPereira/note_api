@@ -1,0 +1,34 @@
+1 - Instale o Nodemon:
+
+npm i nodemon --save
+
+2 - Instale o Mongoose:
+
+npm i mongoose --save
+
+3 - Crie um arquivo chamado database.js em config:
+
+mkdir config
+touch config/database.js
+
+4 - Coloque nele:
+
+var mongoose = require('mongoose');
+mongoose.Promise = global.Promise;
+
+mongoose.connect('mongodb://localhost/javascriptNote', {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+  useCreateIndex: true
+}
+).then(() => console.log('connection succesful'))
+  .catch((err) => console.error(err));
+
+5 - Inclua no app.js:
+
+// Database setup
+require ('./config/database')
+
+6 - Teste subindo o servidor pelo nodemon rodando:
+
+nodemon start​

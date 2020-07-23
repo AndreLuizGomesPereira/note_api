@@ -1,0 +1,62 @@
+Leituras recomendadas:
+
+    ​Encriptando senhas com Bcrypt: https://imasters.com.br/devsecops/encriptando-senhas-com-o-bcrypt
+    Bcrypt no wikipedia: https://en.wikipedia.org/wiki/Bcrypt​​
+
+
+1 - Crie a pasta models em app:
+
+mkdir app/models
+
+2 - Crie o model Note:
+
+touch app/models/note.js
+
+3 - No arquivo:
+
+a - Inclua o mongoose:
+
+var mongoose = require('mongoose');
+
+b - Crie o esquema do note:
+
+var noteSchema = new mongoose.Schema({
+  title: String,
+  body: String,
+  created_at: { type: Date, default: Date.now },
+  updated_at: { type: Date, default: Date.now },
+});
+
+c - Inclua a futura relação com o user:
+
+author: {
+  type: mongoose.Schema.Types.ObjectId,
+  ref: 'User',
+  required: true
+}
+
+d - Exporte o model:
+
+module.exports = mongoose.model('Note', noteSchema);
+
+3 - Crie o arquivo de User rodando:
+
+touch app/models/user.js
+
+4 - Importe o mongoose:
+
+var mongoose = require('mongoose');
+
+5 - Crie o esquema de User:
+
+var userSchema = new mongoose.Schema({
+  name: String,
+  email: { type: String, required: true, unique: true },
+  password: { type: String, required: true },
+  created_at: { type: Date, default: Date.now },
+  updated_at: { type: Date, default: Date.now },
+});
+
+6 - Exporte o model:
+
+module.exports = mongoose.model('User', userSchema);​

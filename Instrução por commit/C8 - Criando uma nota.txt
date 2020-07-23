@@ -1,0 +1,45 @@
+    Em routes crie um arquivo chamado notes.js
+    Nele importe:
+
+    var express = require('express');
+    var router = express.Router();
+    const Note = require('../models/note.js');
+
+    No router Notes coloque:
+
+    router.post('/', async function(req, res) {
+      const { title, body } = req.body;
+
+    });
+
+    Agora vamos criar a note, coloque:
+
+    var note = new Note({title: title, body: body, author: req.user._id});
+
+    try {
+      await note.save();
+      res.json(note);
+    } catch (error) {
+      res.status(401).send(err);
+    }
+
+    No app.js importe o route notes:
+
+    var notesRouter = require('./app/routes/notes');
+    app.use('/notes', notesRouter);
+
+    Importe o middleware de autenticação:
+
+    const withAuth = require('../middlewares/auth');
+
+    Atualize a declaração do método:
+
+    router.post('/', withAuth, async function(req, res) {
+      ...
+    }
+
+    Agora exporte o module:
+
+    module.exports = router;
+
+    Vamos testar no postman

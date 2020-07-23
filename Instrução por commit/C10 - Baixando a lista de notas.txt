@@ -1,0 +1,19 @@
+    No routes notes coloque:
+
+    router.get('/', withAuth, async function(req, res) {
+    });
+
+    Vamos devolver um erro caso algo ocorra:
+
+    try {
+
+    } catch (error) {
+        res.json({error: error}).status(500)
+    }
+
+    Vamos devolver as notas do autor caso tudo dê certo:
+
+    let notes = await Note.find({author: req.user._id })
+    res.send(notes)
+
+    Vamos testar no postman

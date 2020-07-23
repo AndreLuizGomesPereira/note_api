@@ -1,0 +1,36 @@
+
+    No routes notes coloque:
+
+    router.delete('/:id', withAuth, async function(req, res) {
+    });
+
+    Agora vamos pegar o id da nota:
+
+    const { id } = req.params;
+
+    Vamos devolver um erro caso algo ocorra:
+
+    try {
+
+    } catch (err) {
+      res.status(500).send(err);
+    }
+
+    Vamos encontrar a nota:
+
+    let note = await Note.findById(id);
+
+    Vamos verificar se o usuário é o dono dela e devolver um erro caso não:
+
+    if(note && is_owner(req.user, note)){
+
+    }else{
+      res.json({error: 'Forbidden'}).status(403);
+    }
+
+    Caso ele seja o dono vamos deletar e devolver uma mensagem de sucesso:
+
+    await note.delete();
+    res.json({message: 'OK'}).status(204);
+
+    Vamos testar no postman

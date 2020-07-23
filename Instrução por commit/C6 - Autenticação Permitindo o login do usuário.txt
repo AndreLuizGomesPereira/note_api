@@ -1,0 +1,97 @@
+    No nosso model user vamos criar um método para verificar se o password está correto, adicione nele:
+
+    userSchema.methods.isCorrectPassword = function (password, callback) {
+
+    }
+
+    Vamos chamar o bcrypt para ver se o hash está compatível:
+
+    bcrypt.compare(password, this.password, function (err, same) {
+    })
+
+    Vamos retornar dizendo se deu certo ou não:
+
+    if (err) {
+      callback(err);
+    } else {
+      callback(err, same);
+    }
+
+    Vamos instalar a lib jsonwebtoken rodando:
+
+    npm i jsonwebtoken --save
+
+    No route Users:
+
+    const jwt = require('jsonwebtoken');
+
+    Vamos instalar o dotenv rodando:
+
+    npm i dotenv --save
+
+    Usaremos ele para guardar uma variável de ambiente
+    Crie um arquivo .env na root do projeto e coloque:
+
+    JWT_TOKEN=mysecret
+
+    Nas rotas de user inclua:
+
+    require('dotenv').config()
+    const secret = process.env.JWT_TOKEN;
+
+    Crie uma nova rota:
+
+    router.post('/login', async function(req, res) {
+
+    });
+
+    Vamos pegar os parâmetros passados pelo usuário:
+
+    const { email, password } = req.body;
+
+    Agora vamos criar uma estrutura para dar uma mensagem de erro caso o login falhe:
+
+    try {
+
+
+    } catch (error) {
+      res.status(500).json({error: 'Internal error please try again'});
+    }
+
+    Vamos buscar o usuário no try:
+
+    let user = await User.findOne({ email })
+
+    Vamos devolver uma mensagem de erro caso ele não exista ou caso tenha ocorrido um erro interno:
+
+    if (!user) {
+      res.status(401).json({error: 'Incorrect email or password'});
+    } else {
+     
+    }
+
+    Agora no else vamos chamar nosso método que verifica se o usuário entrou com o password correto:
+
+     user.isCorrectPassword(password, function(err, same) {
+     
+     });
+
+    Vamos dar uma mensagem de erro caso o password esteja errado:
+
+    if (!same) {
+      res.status(401).json({error: 'Incorrect email or password'});
+    } else {
+
+    }
+
+    Vamos criar um jwt para devolver se o login der certo:
+
+    const token = jwt.sign({email}, secret, { expiresIn: '1d' });
+
+    Vamos responder com sucesso:
+
+    res.json({user: user, token: token});
+
+    Vamos testar no postman!
+
+​

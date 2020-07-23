@@ -1,0 +1,18 @@
+Leituras recomendadas:
+
+    https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Controle_Acesso_CORS
+    https://expressjs.com/en/resources/middleware/cors.html
+
+
+    O que é CORS?
+    Para instalar a biblioteca cors rode:
+
+    npm i cors --save
+
+    Em app.js importe:
+
+    var cors = require('cors')
+
+    Aplique o middleware:
+
+    app.use(cors())

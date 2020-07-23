@@ -1,0 +1,36 @@
+    No routes notes coloque:
+
+    router.get('/:id', withAuth, async function(req, res) {
+
+    });
+
+    Vamos mostrar um erro caso tenha ocorrido um erro do lado da chamada:
+
+    try {
+
+    } catch (error) {
+      res.send(error).status(500)
+    }
+
+    Vamos pegar o ID da nota e encontra-la:
+
+     const { id } = req.params;
+     let note = await Note.findById(id);
+
+    Vamos criar um método para verificar se o usuário é o dono da nota:
+
+    const is_owner = (user, note) => {
+      if(JSON.stringify(user._id) == JSON.stringify(note.author._id))
+        return true;
+      else
+        return false;
+    }
+
+    Voltando a rota para pegar uma nota vamos verificar se o usuário é o dono da nota:
+
+    if(is_owner(req.user, note))
+      res.json(note);
+    else
+      res.json({error: error}).status(500);
+
+    Vamos testar no postman

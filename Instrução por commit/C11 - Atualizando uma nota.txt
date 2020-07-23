@@ -1,0 +1,31 @@
+    No routes notes coloque:
+
+    router.put('/:id', withAuth, async function(req, res) {
+    });
+
+    Agora vamos pegar os parâmetros passados:
+
+    const { title, body } = req.body;
+    const { id } = req.params;
+
+    Vamos devolver um erro caso algo ocorra:
+
+    try {
+
+    } catch (err) {
+      res.status(500).send(err);
+    }
+
+    Vamos encontrar e atualizar a nota:
+
+    var note = await Note.findOneAndUpdate(
+      {_id: id}, 
+      { $set: { title: title, body: body}}, 
+      { upsert: true, 'new': true }
+    )
+
+    Vamos devolver a nota:
+
+    res.json(note);
+
+    Vamos testar no postman

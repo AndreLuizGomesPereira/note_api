@@ -41,3 +41,6 @@
 - Criar arquivo em rotas, notes.js.
 - Importar o WithAuth(middleware) para a rota nova.
 - No arquivo app.js deve importar a nova rota da criação das notas.
+
+# Iremos visualizar as notas agora.
+- Adicionar uma nova rota GET para localizar por ID para validar a autenticação.
