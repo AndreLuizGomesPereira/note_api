@@ -25,3 +25,10 @@
 - **npm i bcrypt --save** //Biblioteca para trabalhar com password dos usuarios.
 - Criado model com a biblioteca.
 - Importar o model para a rota users.
+
+# Iremos fazer agora a validação da senha criada.
+- Criar um metodo para comparar as senhas no model.
+- Vamos executar a biblioteca JWT
+- **npm i jsonwebtoken --save**
+- Importar para a nossa rota users.
+- **npm i dotenv --save** //Biblioteca para guardar nossas variáveis de ambiente.
