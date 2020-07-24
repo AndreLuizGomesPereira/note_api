@@ -56,3 +56,7 @@
 # Iremos criar recurso para buscar as notas criadas.
 - Adicionar uma nova rota GET, porem vamos iniciar nossa nova rota acima dos "ids" para evitarmos problemas na URL.
 - Foi necessário criar um schema index no model notes para filtrar melhor a nossa pesquisa.
+
+# Liberando o CORS para que outros sites possam chamar a nossa API.
+- **npm i cors --save**
+- Inserir o CORS em nosso app.js.
